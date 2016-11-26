@@ -17,9 +17,25 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /src\/.+.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ['babel-loader']
+              exclude: /node_modules/,
+              test: /src\/.+.jsx?$/,
+              loader: 'babel-loader'
+            },
+            {
+               test: /\.css$/,
+               loader: "style-loader!css-loader"
+            },
+            {
+              test: /\.(jpg|png|gif)$/,
+              loader: "file-loader?name=images/[hash].[ext]"
+            },
+            {
+              test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+              loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            },
+            {
+              test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+              loader: "file"
             }
         ]
     },

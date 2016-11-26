@@ -1,5 +1,7 @@
 'use strict';
 import "babel-polyfill";
+import 'materialize-css/dist/css/materialize.css'
+import 'materialize-css/dist/js/materialize.js'
 
 import React, { Component } from 'react'
 import { render } from 'react-dom';
@@ -16,8 +18,16 @@ const store = createStore(
   applyMiddleware(createSagaMiddleware(watchForLoadImages))
 )
 
+export class Bar extends Component {
+  render() {
+    return(
+      <a className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>button</a>
+    )
+  }
+}
+
 render(
   <Provider store={store}>
-    <Gallery />
+    <Bar />
   </Provider>,
 document.getElementById('app-root'));

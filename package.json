@@ -14,6 +14,7 @@
     "babel-loader": "^6.2.8",
     "babel-polyfill": "6.3.14",
     "express": "^4.14.0",
+    "materialize-css": "^0.97.8",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.4.1",
@@ -31,10 +32,13 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "budo": "^8.0.4",
+    "css-loader": "^0.26.0",
+    "file-loader": "^0.9.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.2.2",
+    "url-loader": "^0.5.7",
     "webpack-dev-server": "^1.16.2"
   }
 }
