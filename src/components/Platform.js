@@ -10,7 +10,10 @@ import * as actions from '../actions'
 let Modal = require('boron/DropModal');
 
 export class Platform extends Component {
-  showModal() {
+  handleOnStationClick(e, name) {
+    e.preventDefault()
+    const { selectStation } = this.props
+    selectStation(name)
     this.refs.modal.show()
   }
 
@@ -31,7 +34,11 @@ export class Platform extends Component {
   }
 
   render() {
-    const { stations, reportIncident } = this.props;
+    const {
+      stations,
+      reportIncident,
+      selectedStation
+    } = this.props;
 
     return (
       <div>
@@ -42,18 +49,17 @@ export class Platform extends Component {
         <SelectBound id="2" name="North" />
 
         <Modal ref="modal">
-          <Picker onChange={ this.handlePickerChanged.bind(this) }>
+          <Picker onChange={this.handlePickerChanged.bind(this)} station={selectedStation}>
             <a
               className="waves-effect waves-light btn"
-              onClick= { reportIncident }>Report</a>
+              onClick={reportIncident}>Report</a>
           </Picker>
         </Modal>
-          <Stations stations={ stations }>
-            <a className="secondary-content btn-floating btn"
-              onClick={ this.showModal.bind(this) }>
-              <i className="material-icons">add</i>
-            </a>
-          </Stations>
+
+        <Stations
+          stations={stations}
+          onStationClick={this.handleOnStationClick.bind(this)}
+        />
       </div>
     )
   }
@@ -62,7 +68,8 @@ export class Platform extends Component {
 const mapStateToProps = (state) => ({
   stations: state.stations,
   selectedIncident: state.selectedIncident,
-  incident: state.incident
+  incident: state.incident,
+  selectedStation: state.selectedStation
 })
 
 export default connect(mapStateToProps, actions)(Platform)

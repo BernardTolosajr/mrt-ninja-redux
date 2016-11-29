@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class Picker extends Component {
   render() {
-    const { onChange } = this.props
+    const { onChange, station } = this.props
     return (
         <div className="row">
           <form className="col s12">
-            <h5>Report Incident</h5>
+            <h5>{station} Station</h5>
             <div className="row">
               <div className="input-field col s12">
                 <select onChange={e => onChange(e.target.value) } className="browser-default">

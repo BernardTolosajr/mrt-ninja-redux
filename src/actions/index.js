@@ -18,3 +18,8 @@ export const selectBound = (name) => ({
   type: 'SELECT_BOUND',
   name
 })
+
+export const selectStation = (name) => ({
+  type: 'SELECT_STATION',
+  name
+})

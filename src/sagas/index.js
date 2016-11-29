@@ -1,30 +1,42 @@
 import { take, call, fork, put, select } from 'redux-saga/effects'
-import { getSelectedIncident } from '../reducers'
+import { getSelectedIncident, getSelectedBound } from '../reducers'
 
 let list = [{
-    name: 'Nort Avenue'
+    name: 'Nort Avenue',
+    incidents: ['Crowded', 'Delayed Train', 'Close']
   }, {
-    name: 'Quezon Avenue'
+    name: 'Quezon Avenue',
+    incidents: []
   }, {
-    name: 'Cubao'
+    name: 'Cubao',
+    incidents: []
   }, {
-    name: 'Santola,'
+    name: 'Santola,',
+    incidents: []
   }, {
-    name: 'Ortigas'
+    name: 'Ortigas',
+    incidents: []
   }, {
-    name: 'Shaw Boulevard'
+    name: 'Shaw Boulevard',
+    incidents: []
   }, {
-    name: 'Boni Avenue'
+    name: 'Boni Avenue',
+    incidents: []
   }, {
-    name: 'Guadalupe'
+    name: 'Guadalupe',
+    incidents: []
   }, {
-    name: 'Buendia'
+    name: 'Buendia',
+    incidents: []
   }, {
-    name: 'Ayala'
+    name: 'Ayala',
+    incidents: []
   }, {
-    name: 'Magallanes'
+    name: 'Magallanes',
+    incidents: []
   }, {
-    name: 'Taft Avenue'
+    name: 'Taft Avenue',
+    incidents: []
   }]
 
 
@@ -34,7 +46,8 @@ function *delay(time) {
 
 export function * report() {
   const incident = yield select(getSelectedIncident)
-  console.log('incident', incident)
+  const bound = yield select(getSelectedBound);
+  console.log('reporting ', incident, bound)
   yield delay(2000)
   yield put({type: 'REPORT_INCIDENT_SUCCESS'})
 }
@@ -47,7 +60,6 @@ export function* watchForReportIncident() {
 }
 
 function* loadStations(name) {
-  yield delay(2000)
   yield put({type: 'LOAD_STATIONS', stations: list})
 }
 

@@ -30,6 +30,15 @@ const selectedIncident = (state = 'Crowded', action) => {
   }
 }
 
+const selectedStation = (state = '', action) => {
+  switch(action.type) {
+    case 'SELECT_STATION':
+      return action.name
+    default:
+      return state
+  }
+}
+
 const selectedBound = (state = 'South', action) => {
   switch(action.type) {
     case 'SELECT_BOUND':
@@ -43,11 +52,16 @@ const rootReducer = combineReducers({
   stations,
   selectedIncident,
   incident,
-  selectedBound
+  selectedBound,
+  selectedStation
 })
 
 export const getSelectedIncident = (state) => {
   return state.selectedIncident
+}
+
+export const getSelectedBound = (state) => {
+  return state.selectedBound
 }
 
 export default rootReducer
