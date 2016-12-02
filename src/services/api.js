@@ -23,8 +23,9 @@ export const updateStatus = (payload) => {
 
 export const refresh = () => {
   return new Promise((resolve, reject) => {
+
     bound.south.forEach((station) => {
-      let {name} = station
+      let  {name } = station
       let path = `bounds/South/${name}`
       firebaseDb.ref(path).set('Normal conditions')
     })

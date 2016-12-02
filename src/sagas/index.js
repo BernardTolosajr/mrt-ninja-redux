@@ -56,13 +56,9 @@ export function* refreshData() {
 
 function* watchRefreshData() {
   while(true) {
-    yield fork(refreshData)
-
     yield take('REFRESH_STATION_SUCCESS')
 
-    console.log('refreshed')
-
-    yield call(refreshData)
+    yield fork(refreshData)
   }
 }
 
@@ -104,6 +100,7 @@ export default function* root() {
   yield [
     fork(watchForSelectBound),
     fork(watchForReportIncident),
-    fork(watchRefreshData)
+    fork(watchRefreshData),
+    fork(refreshData)
   ]
 }
