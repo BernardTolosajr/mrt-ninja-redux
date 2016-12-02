@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config ./webpack.prod.config.js --progress --colors",
     "test": "babel-node ./tests/saga.test.js | tap-spec",
     "start": "webpack-dev-server --inline --hot"
   },
