@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import Picker from './Picker'
 import Stations from './Stations'
 import Nav from './Nav'
+import Footer from './Footer'
 import SelectBound from './SelectBound'
 import * as actions from '../actions'
+import {getSelectedStation } from '../reducers'
 
 let Modal = require('boron/DropModal');
 
@@ -44,22 +46,29 @@ export class Platform extends Component {
       <div>
         <Nav />
         < br/>
+        <div className="container">
+          <p>
+          OUTSMARTING MRT, TOGETHER.
+          Get real-time help from fellow MRT riders.
+          </p>
 
-        <SelectBound id="1" name="South" />
-        <SelectBound id="2" name="North" />
+          <SelectBound id="1" name="South" />
+          <SelectBound id="2" name="North" />
 
-        <Modal ref="modal">
-          <Picker onChange={this.handlePickerChanged.bind(this)} station={selectedStation}>
-            <a
-              className="waves-effect waves-light btn"
-              onClick={reportIncident}>Report</a>
-          </Picker>
-        </Modal>
+          <Modal ref="modal">
+            <Picker onChange={this.handlePickerChanged.bind(this)} station={selectedStation}>
+              <a
+                className="waves-effect waves-light btn"
+                onClick={reportIncident}>Report</a>
+            </Picker>
+          </Modal>
 
-        <Stations
-          stations={stations}
-          onStationClick={this.handleOnStationClick.bind(this)}
-        />
+          <Stations
+            stations={stations}
+            onStationClick={this.handleOnStationClick.bind(this)}
+          />
+        </div>
+       <Footer />
       </div>
     )
   }
@@ -67,9 +76,8 @@ export class Platform extends Component {
 
 const mapStateToProps = (state) => ({
   stations: state.stations,
-  selectedIncident: state.selectedIncident,
   incident: state.incident,
-  selectedStation: state.selectedStation
+  selectedStation: getSelectedStation(state)
 })
 
 export default connect(mapStateToProps, actions)(Platform)

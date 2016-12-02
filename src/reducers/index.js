@@ -1,11 +1,22 @@
 import { combineReducers } from 'redux'
 
+const updateStatus = (state, snapshot) => {
+  return state.map((station) => {
+    if (station.name === snapshot.station) {
+      station.status = snapshot.status
+    }
+    return station
+  })
+}
+
 const stations = (state = [], action) => {
   switch(action.type) {
     case 'LOAD_STATIONS':
       return action.stations
+    case 'FIREBASE_CHILD_ADDED':
+      return updateStatus(state, action.snapshot)
     default:
-      return state;
+      return state
   }
 }
 
@@ -56,12 +67,16 @@ const rootReducer = combineReducers({
   selectedStation
 })
 
+export default rootReducer
+
 export const getSelectedIncident = (state) => {
   return state.selectedIncident
+}
+
+export const getSelectedStation = (state) => {
+  return state.selectedStation
 }
 
 export const getSelectedBound = (state) => {
   return state.selectedBound
 }
-
-export default rootReducer

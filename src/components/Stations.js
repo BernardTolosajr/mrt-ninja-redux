@@ -1,14 +1,14 @@
 import React from 'react'
-import Incidents from './Incidents'
+import Status from './Status'
 
 const Stations = ({stations, onStationClick}) => {
   return (
         <ul className="collection">
           {stations.map((station, index) => (
             <li className="collection-item avatar" key={index}>
-              <i className="material-icons circle green"></i>
+              <Status status={station.status}/>
               <span className="title">{station.name}</span>
-                <Incidents incidents={station.incidents}/>
+                <span className="label">{station.status}</span>
                 <a className="secondary-content btn-floating btn"
                   onClick={e => onStationClick(e, station.name) }>
                   <i className="material-icons">add</i>

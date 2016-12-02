@@ -10,8 +10,16 @@ class Picker extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <select onChange={e => onChange(e.target.value) } className="browser-default">
-                <option value="Delayed">Delayed</option>
-                <option value="Crowded">Crowded</option>
+                <option defaultValue="">Select Incident</option>
+                <option value="Delayed train">Delayed train</option>
+                <option value="Train too crowded to board">Train too crowded to board</option>
+                <option value="Overcrowded platform">Overcrowded platform</option>
+                <option value="Overcrowded train">Overcrowded train</option>
+                <option value="Train stopped between stations">Train stopped between stations</option>
+                <option value="Disabled train">Disabled train</option>
+                <option value="Medical emergency">Medical emergency</option>
+                <option value="Police action">Police action</option>
+                <option value="Normal conditions">Normal conditions</option>
               </select>
               </div>
             </div>

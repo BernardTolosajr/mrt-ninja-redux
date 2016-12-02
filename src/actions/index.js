@@ -23,3 +23,8 @@ export const selectStation = (name) => ({
   type: 'SELECT_STATION',
   name
 })
+
+export const error = (message) => ({
+  type: 'ERROR',
+  message
+})
